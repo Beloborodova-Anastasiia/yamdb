@@ -9,8 +9,7 @@ services:
       - ./.env
 
   web:
-    build: ../api_yamdb
-    image: "abeloborodova/api_yamdb:v1"  
+    image: abeloborodova/api_yamdb:latest
     restart: always
     volumes:
       - static_value:/app/static/
