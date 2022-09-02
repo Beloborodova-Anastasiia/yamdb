@@ -1,5 +1,7 @@
 # Проект YaMDb
 
+![Workflow status](https://github.com/Beloborodova-Anastasiia/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg
+)
 
 ### Описание
 
@@ -13,11 +15,6 @@ API для "YaMDb" дает возможность взаимодействот�
 
 Также проект делает автоматический запуск тестов, обновление образов на Docker Hub,автоматический деплой на боевой сервер при пуше в главную ветку main.
 
-
-### Статус workflow
-
-![Workflow status](https://github.com/Beloborodova-Anastasiia/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg
-)
 
 ### Технологии
 
