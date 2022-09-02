@@ -12,6 +12,7 @@ class AdminOnly(permissions.BasePermission):
                 request.user.is_superuser
                 or request.user.is_admin
             )
+        return False
 
 
 class UserOwner(permissions.BasePermission):
@@ -25,3 +26,4 @@ class UserOwner(permissions.BasePermission):
     def has_object_permission(self, request, view, obj):
         if request.user.is_authenticated:
             return obj.username == request.user
+        return False

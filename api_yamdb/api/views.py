@@ -1,15 +1,14 @@
-from django.db.models import Avg
-from django.shortcuts import get_object_or_404
-from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import filters, permissions, viewsets
-
+from api.filters import TitleFilter
 from api.mixins import ListCreateDestroyUpdateViewset, ListDeleteViewSet
 from api.permissions import (AuthorAdminModeratorOrReadOnly,
                              SuperuserAdminOrReadOnly)
 from api.serializers import (CategorySerializer, CommentSerializer,
                              GenreSerializer, ReviewSerializer,
                              TitleGetSerializer, TitleSerializer)
-from api.filters import TitleFilter
+from django.db.models import Avg
+from django.shortcuts import get_object_or_404
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import filters, permissions, viewsets
 from reviews.models import Category, Genre, Review, Title
 
 
@@ -23,8 +22,7 @@ class ReviewViewSet(viewsets.ModelViewSet):
             Title,
             id=self.kwargs.get('title_id')
         )
-        queryset = title.reviews.order_by('id')
-        return queryset
+        return title.reviews.order_by('id')
 
     def perform_create(self, serializer):
         title = get_object_or_404(
@@ -48,8 +46,7 @@ class CommentViewSet(viewsets.ModelViewSet):
             id=self.kwargs.get('review_id'),
             title=self.kwargs.get('title_id')
         )
-        queryset = review.comments.order_by('id')
-        return queryset
+        return review.comments.order_by('id')
 
     def perform_create(self, serializer):
         review = get_object_or_404(

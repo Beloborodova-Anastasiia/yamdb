@@ -1,7 +1,6 @@
+from api_users.constants import RESERVED_KEYWORD_ME
 from django.contrib.auth.validators import UnicodeUsernameValidator
 from rest_framework import serializers
-
-from api_users.constants import RESERVED_KEYWORD_ME
 from users.models import User, UserRole
 
 

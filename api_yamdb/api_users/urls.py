@@ -1,8 +1,6 @@
+from api_users.views import UserApiViewSet, get_token, signup
 from django.urls import include, path
 from rest_framework import routers
-
-from api_users.views import UserApiViewSet, get_token, signup
-
 
 app_name = 'api_users'
 router = routers.DefaultRouter()
