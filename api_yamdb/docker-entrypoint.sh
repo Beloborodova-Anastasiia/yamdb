@@ -3,9 +3,9 @@
 echo "Collect static files"
 python manage.py collectstatic --noinput
 
-echo "Apply database migrations"
-python manage.py makemigrations reviews
-python manage.py migrate
+# echo "Apply database migrations"
+# python manage.py makemigrations reviews
+# python manage.py migrate
 
 # echo "Load fixtures"
 # python manage.py loaddata fixtures.json
