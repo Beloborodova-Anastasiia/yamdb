@@ -1,5 +1,4 @@
-import os
-from split_settings.tools import include, optional
+from split_settings.tools import include
 
 
 include(
