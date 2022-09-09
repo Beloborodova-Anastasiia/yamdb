@@ -1,6 +1,6 @@
 from split_settings.tools import include
 
 include(
-    'settings/django_settings.py',
-    'settings/project_settings.py'
+    '*/django_settings.py',
+    '*/project_settings.py'
 )
