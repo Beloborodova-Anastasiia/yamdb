@@ -31,11 +31,11 @@ Docker 20.10.17
 Клонировать репозиторий и перейти в него в командной строке:
 
 ```
-git clone git@github.com:Beloborodova-Anastasiia/yamdb_final.git
+git clone git@github.com:Beloborodova-Anastasiia/yamdb.git
 ```
 
 ```
-cd yamdb_final/infra
+cd yamdb/infra
 ```
 
 Создать env-файл по следующему шаблону:
