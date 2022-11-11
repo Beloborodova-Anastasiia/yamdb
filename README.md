@@ -22,6 +22,8 @@ Python 3.7
 
 Django 2.2.19
 
+Django REST framework 3.12.4
+
 Docker 20.10.17
 
 ### Как запустить проект локально:
