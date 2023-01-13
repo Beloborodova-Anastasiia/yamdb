@@ -1,22 +1,22 @@
-# Проект YaMDb
+# Project YaMDb
 
 ![Workflow status](https://github.com/Beloborodova-Anastasiia/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg
 )
 
-### Описание
+### Description
 
-Проект YaMDb собирает отзывы  пользователей на произведения.
-Сами произведения в YaMDb не хранятся, здесь нельзя посмотреть фильм или послушать музыку.
-Благодарные или возмущённые пользователи оставляют к произведениям текстовые отзывы и ставят произведению оценку в диапазоне от одного до десяти; из пользовательских оценок формируется рейтинг произведения.
+The YaMDb project collects user's reviews on works of art.
 
-API для "YaMDb" дает возможность взаимодействоть с функциональной частью "YaMDb" через API-сервис.
+The works of ast themselves are not stored in YaMDb.
+Users can write text review on work, rate the work in the range from one to ten. From user's ratings  is formed the rating.
 
-Проект упакован в docker-контейнер, что дает возможность легко развернуть его на любом компьютере.
+Interraction with functional part od YaMDb occurs through API-servise.
 
-Также проект делает автоматический запуск тестов, обновление образов на Docker Hub,автоматический деплой на боевой сервер при пуше в главную ветку main.
+The project is packaged in a docker container. 
 
+In the project is configured Git-actiont. It makes authomatic tests runing and Docker Hub images updating.
 
-### Технологии
+### Technologies
 
 Python 3.7
 
@@ -26,9 +26,9 @@ Django REST framework 3.12.4
 
 Docker 20.10.17
 
-### Как запустить проект локально:
+### Local project run:
 
-Клонировать репозиторий и перейти в него в командной строке:
+Clone a repository and navigate to it on the command line:
 
 ```
 git clone git@github.com:Beloborodova-Anastasiia/yamdb.git
@@ -38,7 +38,7 @@ git clone git@github.com:Beloborodova-Anastasiia/yamdb.git
 cd yamdb/infra
 ```
 
-Создать env-файл по следующему шаблону:
+Create env-file by template:
 
 ```
 MY_KEY='Key django-project'
@@ -50,100 +50,102 @@ DB_HOST=db
 DB_PORT=5432
 ```
 
-Запустить сборку docker-контейнера:
+Run build docker-container:
 
 ```
-для Windows и Mac:
+for Windows or Mac:
 docker-compose up -d --build
 ```
 ```
-дляLinux:
+for Linux:
 sudo docker-compose up -d --build
 ```
 
-Перенести данные в базу данных:
+Move data to database:
 
 ```
-для Windows и Mac:
+for Windows or Mac:
 docker-compose exec web python manage.py loaddata fixtures.json
 ```
 ```
-дляLinux:
+for Linux:
 sudo docker-compose exec web python manage.py loaddata fixtures.json
 ```
 
-При необходимости создать суперюзера следующей командой:
+Create a superuser if necessary:
 
 ```
-для Windows и Mac:
+for Windows or Mac:
 docker-compose exec web python manage.py createsuperuser
 ```
 ```
-дляLinux:
+for Linux:
 sudo docker-compose exec web python manage.py createsuperuser
 ```
 
-Сайт администратора проекта доступен по адресу;
+The project administrator's website is available at:
 
 ```
 http://localhost/admin
 ```
 
 
-### Примеры запросов к API
+### API request examples
 
-# Алгоритм регистрации пользователей
+# New user's registration algorithm
 
-Пользователь отправляет POST-запрос на добавление нового пользователя с параметрами email и username на эндпоинт /api/v1/auth/signup/.
-YaMDB отправляет письмо с кодом подтверждения (confirmation_code) на адрес email.
-Пользователь отправляет POST-запрос с параметрами username и confirmation_code на эндпоинт /api/v1/auth/token/, в ответе на запрос ему приходит token (JWT-токен).
-При желании пользователь отправляет PATCH-запрос на эндпоинт /api/v1/users/me/ и заполняет поля в своём профайле (описание полей — в документации).
+User sends POST-request at endpoint /api/v1/auth/signup/ with parameters: email address and username.
+The servise sends email with confirmation code on the email address.
+Then users sends at endpoint /api/v1/auth/token/ POST-request with parammeters:
+usernsame, confirmation code. User recieves JWT-token in the response.
+User edits his profile to send PATCH-request at endpoint /api/v1/users/me/ if hi wants.
 
-Регистрация нового пользователя:
+
+New user registration:
 
 ```
 POST: /api/v1/auth/signup/
 ```
 ```
-Тело запроса:
+Request body:
 {
   "email": "string",
   "username": "string"
 }
 ```
 ```
-Ответ:
+Response:
 {
   "email": "string",
   "username": "string"
 }
 ```
 
-Получение JWT-токена:
+JWT-ещлут receiving:
 ```
 POST: /api/v1/auth/token/
 ```
 ```
-Тело запроса:
+Request body:
 {
   "username": "string",
   "confirmation_code": "string"
 }
 ```
 ```
-Ответ:
+Response:
 {
   "token": "string"
 }
 ```
 
-Получение списка всех категорий
+All categories receiving:
 
 ```
 GET: /api/v1/categories/
 ```
 ```
-Ответ:
+Response:
 [
   {
     "count": 0,
@@ -159,20 +161,20 @@ GET: /api/v1/categories/
 ]
 ```
 
-Добавление нового отзыва:
+New review adding:
 
 ```
 POST: /api/v1/titles/{title_id}/reviews/
 ```
 ```
-Тело запроса:
+Request body:
 {
   "text": "string",
   "score": 1
 }
 ```
 ```
-Ответ:
+Response:
 {
   "id": 0,
   "text": "string",
@@ -182,14 +184,13 @@ POST: /api/v1/titles/{title_id}/reviews/
 }
 ```
 
-Изменение данных пользователя по username:
-
+Profile changing:
 
 ```
 PATCH: /api/v1/users/{username}/
 ```
 ```
-Тело запроса:
+Request body:
 {
   "username": "string",
   "email": "user@example.com",
@@ -200,7 +201,7 @@ PATCH: /api/v1/users/{username}/
 }
 ```
 ```
-Ответ:
+Response:
 {
   "username": "string",
   "email": "user@example.com",
@@ -212,6 +213,8 @@ PATCH: /api/v1/users/{username}/
 ```
 
 
-### Автор
+### Author
 
-Белобородова Анастасия  beloborodova.anastasiia@yandex.ru
+Anastasiia Beloborodova 
+
+anastasiia.beloborodova@gmail.com
