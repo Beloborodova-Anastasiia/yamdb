@@ -87,8 +87,13 @@ The project administrator's website is available at:
 
 ```
 http://localhost/admin
-```
 
+```
+Project's documentation is available at:
+
+```
+http://localhost/redoc
+```
 
 ### API request examples
 
