@@ -10,7 +10,7 @@ The YaMDb project collects user's reviews on works of art.
 The works of ast themselves are not stored in YaMDb.
 Users can write text review on work, rate the work in the range from one to ten. From user's ratings  is formed the rating.
 
-Interraction with functional part od YaMDb occurs through API-servise.
+Interraction with functional part of YaMDb occurs through API-servise.
 
 The project is packaged in a docker container. 
 
